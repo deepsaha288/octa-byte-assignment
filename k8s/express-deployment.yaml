@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: express-backend
+  namespace: myapp-namespace
+  labels:
+    app: express-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: express-backend
+  template:
+    metadata:
+      labels:
+        app: express-backend
+    spec:
+      containers:
+      - name: express-backend
+        image: deepsaha288/express-api-backend:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: DB_HOST
+          value: "appdb.586771776875.us-east-1.rds.amazonaws.com" # e.g., db.xxxxx.rds.amazonaws.com
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: username
+        - name: DB_PASS
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: express-service
+  namespace: myapp-namespace
+spec:
+  selector:
+    app: express-backend
+  ports:
+  - port: 3000
+    targetPort: 3000

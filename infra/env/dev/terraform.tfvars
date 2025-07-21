@@ -1,0 +1,13 @@
+aws_region            = "us-east-1"
+vpc_cidr              = "10.0.0.0/16"
+public_subnets        = ["10.0.1.0/24", "10.0.2.0/24"]
+private_subnets       = ["10.0.3.0/24", "10.0.4.0/24"]
+env                   = "dev"
+cluster_name          = "demo-eks-cluster"
+db_name               = "appdb"
+db_username           = "admin"
+db_password           = "admin@s123"
+key_name              = "devops_key.pem"
+jenkins_instance_type = "t3.medium"
+oidc_provider_arn     = "arn:aws:iam::586771776875:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/EXAMPLED123456"
+oidc_provider_url     = "https://oidc.eks.us-east-1.amazonaws.com/id/EXAMPLED123456"
