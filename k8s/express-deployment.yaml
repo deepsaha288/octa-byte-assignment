@@ -17,12 +17,12 @@ spec:
     spec:
       containers:
       - name: express-backend
-        image: deepsaha288/express-api-backend:latest
+        image: 586771776875.dkr.ecr.us-east-1.amazonaws.com/express-api-backend:latest
         ports:
         - containerPort: 3000
         env:
         - name: DB_HOST
-          value: "appdb.586771776875.us-east-1.rds.amazonaws.com" # e.g., db.xxxxx.rds.amazonaws.com
+          value: "appdb.586771776875.us-east-1.rds.amazonaws.com"
         - name: DB_USER
           valueFrom:
             secretKeyRef:
@@ -43,5 +43,5 @@ spec:
   selector:
     app: express-backend
   ports:
-  - port: 3000
+  - port: 80
     targetPort: 3000

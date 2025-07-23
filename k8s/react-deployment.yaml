@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: react-frontend
-        image: deepsaha288/react-app-frontend:latest
+        image: 586771776875.dkr.ecr.us-east-1.amazonaws.com/react-app-frontend:latest
         ports:
         - containerPort: 80
 ---
